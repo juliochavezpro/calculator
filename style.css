@@ -1,6 +1,6 @@
 body {
     color: white;
-    background-color: #122b3f;
+    background: linear-gradient(to right, #A2EFE3, #73D8FB);
     font-family: roboto, arial, sans-serif;
     padding: 0;
     margin: 0;
@@ -23,8 +23,12 @@ body {
     min-height: 50px;
     padding: 10px;
     margin: 15px 10px;
-    font-size: 30px;
+    font-size: 28px;
     background-color: #203000;
+}
+
+#history {
+   font-size: 12px; 
 }
 
 #buttons {
@@ -34,29 +38,34 @@ body {
     justify-content: center;
 }
 
-.dark-btn, .grey-btn, .orange-btn {
-    border-radius: 50%;
-    border-width: 4px;
+.btn {
+    color: white;
+    font-family: roboto, arial, sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 70%;
+    border: none;
     margin: 10px;
     padding: 10px;
-    width: 20px;
+    width: 40px;
 }
 
-.dark-btn {
-    background-color: grey;
-
-}
-
-.orange-btn {
-    background-color: orange;
-}
-
-.grey-btn {
-    background-color: silver;
-}
-
-.pressed {
-    transform: scale(1.1);
+.btn:active {
     border-color: white;
-    box-shadow: 0 0 10px white;
+    box-shadow: 0 0 1px white;
+    transform: scale(1.1);
+    opacity: 0.9;
 }
+
+.dark-btn {background-color: grey;}
+
+.dark-btn:hover {background-color: rgb(100, 100, 100)}
+
+.orange-btn {background-color: orange;}
+
+.orange-btn:hover {background-color: rgb(196, 127, 0)}
+
+.grey-btn {background-color: silver;}
+
+.grey-btn:hover {background-color: rgb(167, 167, 167)}
