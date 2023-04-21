@@ -1,7 +1,8 @@
 body {
-    color: white;
+    color: black;
     background: linear-gradient(to right, #A2EFE3, #73D8FB);
     font-family: roboto, arial, sans-serif;
+    font-weight: bold;
     padding: 0;
     margin: 0;
     display: flex;
@@ -9,29 +10,32 @@ body {
     justify-content: center;
 }
 
-#frame {
+#calculator {
     display: block;
-    margin: 50px auto;
-    padding: 50px 30px;
-    background-color: black;
-    border-radius: 10%;
+    margin: 30px auto;
     text-align: center;
+    color: white;
+    border: white solid 2px;
 }
 
 #screen {
-    display: block;
+    display: flex;
+    flex-direction: column;
+    word-wrap: break-word;
+    word-break: break-all;
+    max-width: 218px;
     min-height: 50px;
     padding: 10px;
-    margin: 15px 10px;
+    border: 1px solid white;
     font-size: 28px;
-    background-color: #203000;
+    background-color: rgb(9, 43, 44, .6);
 }
 
-#history {
-   font-size: 12px; 
+#previous {
+   font-size: 16px; 
 }
 
-#buttons {
+#button-grid {
     display: flex;
     flex: wrap;
     align-items: center;
@@ -39,33 +43,20 @@ body {
 }
 
 .btn {
-    color: white;
+    color: black;
     font-family: roboto, arial, sans-serif;
+    font-weight: bold;
+    font-size: 16px;
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 70%;
-    border: none;
-    margin: 10px;
-    padding: 10px;
-    width: 40px;
+    border: 1px solid white;
+    width: 60px;
+    height: 40px;
+    background-color: rgb(255, 255, 255, .6);
 }
 
 .btn:active {
-    border-color: white;
-    box-shadow: 0 0 1px white;
-    transform: scale(1.1);
-    opacity: 0.9;
+    transform: scale(1.05);
+    opacity: .9;
 }
-
-.dark-btn {background-color: grey;}
-
-.dark-btn:hover {background-color: rgb(100, 100, 100)}
-
-.orange-btn {background-color: orange;}
-
-.orange-btn:hover {background-color: rgb(196, 127, 0)}
-
-.grey-btn {background-color: silver;}
-
-.grey-btn:hover {background-color: rgb(167, 167, 167)}

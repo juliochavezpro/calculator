@@ -10,38 +10,38 @@
 </head>
 
 <body>
-    <div id="frame">
+    <div id="calculator">
         <div id="screen">
-            <div id="history"></div>
-            <div id="current"></div>
+            <div data-previous id="previous"></div>
+            <div data-current id="current"></div>
         </div>
-        <div id="buttons">
+        <div id="button-grid">
             <div class="btn-row-one">
-                <button id="seven-btn" class="btn dark-btn" onclick="javascript:setVal(7)">7</button>
-                <button id="four-btn" class="btn dark-btn" onclick="javascript:setVal(4)">4</button>
-                <button id="one-btn" class="btn dark-btn" onclick="javascript:setVal(1)">1</button>
-                <button id="clear-btn" class="btn grey-btn" onclick="javascript:clearCalculator()">AC</button>
+                <button data-number id="seven-btn" class="btn num-btn">7</button>
+                <button data-number id="four-btn" class="btn num-btn">4</button>
+                <button data-number id="one-btn" class="btn num-btn">1</button>
+                <button data-clear id="clear-btn" class="btn equals-ac-btns">AC</button>
             </div>
 
             <div class="btn-row-two">
-                <button id="eight-btn" class="btn dark-btn" onclick="javascript:setVal(8)">8</button>
-                <button id="five-btn" class="btn dark-btn" onclick="javascript:setVal(5)">5</button>
-                <button id="two-btn" class="btn dark-btn" onclick="javascript:setVal(2)">2</button>
-                <button id="zero-btn" class="btn dark-btn" onclick="javascript:setVal(0)">0</button>
+                <button data-number id="eight-btn" class="btn num-btn">8</button>
+                <button data-number id="five-btn" class="btn num-btn">5</button>
+                <button data-number id="two-btn" class="btn num-btn">2</button>
+                <button data-number id="zero-btn" class="btn num-btn">0</button>
             </div>
 
             <div class="btn-row-three">
-                <button id="nine-btn" class="btn dark-btn" onclick="javascript:setVal(9)">9</button>
-                <button id="six-btn" class="btn dark-btn" onclick="javascript:setVal(6)">6</button>
-                <button id="three-btn" class="btn dark-btn" onclick="javascript:setVal(3)">3</button>
-                <button id="equal-btn" class="btn grey-btn" onclick="javascript:solve()">=</button>
+                <button data-number id="nine-btn" class="btn num-btn">9</button>
+                <button data-number id="six-btn" class="btn num-btn">6</button>
+                <button data-number id="three-btn" class="btn num-btn">3</button>
+                <button data-equals id="equal-btn" class="btn equals-ac-btns">=</button>
             </div>
 
             <div class="btn-row-four">
-                <button id="divide-btn" class="btn operator orange-btn" onclick="javascript:divide()">÷</button>
-                <button id="mult-btn" class="btn operator orange-btn" onclick="javascript:multiply()">x</button>
-                <button id="sub-btn" class="btn operator orange-btn" onclick="javascript:subtract()">-</button>
-                <button id="add-btn" class="btn operator orange-btn" onclick="javascript:add()">+</button>                
+                <button data-operator id="divide-btn" class="btn op-btn">÷</button>
+                <button data-operator id="mult-btn" class="btn op-btn">x</button>
+                <button data-operator id="sub-btn" class="btn op-btn">-</button>
+                <button data-operator id="add-btn" class="btn op-btn">+</button>                
             </div>
         </div>
     </div>    

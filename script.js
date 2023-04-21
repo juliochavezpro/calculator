@@ -1,73 +1,96 @@
-let a;
-let b;
-let output;
+class Calculator {
+    constructor(previousOperandText, currentOperandText) {
+        this.previousOperandText = previousOperandText;
+        this.currentOperandText = currentOperandText;
+        this.clear();
+    };
 
-const screenOutput = document.getElementById('current');
+    clear() {
+        this.currentOperand = '';
+        this.previousOperand = '';
+        this.operation = undefined;
+    };
 
-const history = document.getElementById('history');
+    appendNumber(number) {
+        this.currentOperand = this.currentOperand.toString() + number.toString();
+    };
 
-history.innerText = ' ';
+    selectOperator(operation) {
+        if (this.currentOperand === '') return;
+        if (this.previousOperand !== '') {
+            this.compute();
+        };
+        this.operation = operation;
+        this.previousOperand = this.currentOperand;
+        this.currentOperand = '';
+    };
 
-const buttons = document.querySelectorAll('.btn');
+    compute() {
+        let computation;
+        const prev = parseFloat(this.previousOperand);
+        const curr = parseFloat(this.currentOperand);
+        if (isNaN(prev) || isNaN(curr)) return;
+        switch (this.operation) {
+            case '+': 
+                computation = prev + curr;
+                break;
+            case '-':
+                computation = prev - curr;
+                break;
+            case 'x':
+                computation = prev * curr;
+                break;
+            case '÷':
+                computation = prev / curr;
+                break;
+            default:
+                return;
+        }
+        this.currentOperand = computation;
+        this.operation = undefined;
+        this.previousOperand = '';
+    };
 
-const equalBtn = document.getElementById('equal-btn');
+    updateDisplay() {
+        this.currentOperandText.innerText = this.currentOperand;
+        this.previousOperandText.innerText = this.previousOperand;
+        // if (this.operation !== null) {
+        //     this.previousOperandText.innerText = `${this.previousOperand} ${this.operation}`;
+        // };
 
-const operators = document.querySelectorAll('.operator')
+    };
 
-const findSum = operators[3].addEventListener('click', add = () => {
-    history.innerText = `${a}+${b}`;
-});
-
-const findDifference = operators[2].addEventListener('click', subtract = () => {
-    history.innerText = `${a}-${b}`;
-    screenOutput.innerText = `${b}`;
-});
-
-
-const findProduct = operators[1].addEventListener('click', multiply = () => {
-    history.innerText = `${a}*${b}`;
-    screenOutput.innerText = `${b}`;
-});
-
-const findQuotient = operators[0].addEventListener('click', divide = () => {
-    history.innerText = `${a}/${b}`;
-    screenOutput.innerText = `${b}`;
-});
-
-function solve() {
-    if (typeof b !== 'number') {
-        screenOutput.innerText = `${a}`
-        console.log(`output = ${output}`);
-    } else {
-        screenOutput.innerText = `${output}`;
-        a = output;
-    }
-}
-
-const equals = () => {
-    equalBtn.addEventListener("click", solve())
-}
-
-function clearCalculator() {
-    a = '';
-    b = '';
-    history.innerText = '';
-    screenOutput.innerText = '';
-}
-
-
-function setVal(val) {
-    if (typeof a == 'undefined' && output == 'undefined') {
-        a = val;
-        screenOutput.innerText = `${a}`;
-    } else if (typeof a !== 'undefined') {
-        a = `${a}${val}`;
-        screenOutput.innerText = `${a}`;
-    } else if (typeof b == 'undefined') {
-        b = val;
-        screenOutput.innerText = `${b}`
-    } else {
-        b = `${b}${val}`
-        screenOutput.innerText = `${b}`
-    }
 };
+
+const numberButtons = document.querySelectorAll('[data-number]');
+const operationButtons = document.querySelectorAll('[data-operator]');
+const previousOperandText = document.querySelector('[data-previous]');
+const currentOperandText = document.querySelector('[data-current]');
+const equalsButton = document.querySelector('[data-equals]');
+const clearButton = document.querySelector('[data-clear]');
+
+const calculator = new Calculator(previousOperandText, currentOperandText);
+
+numberButtons.forEach(button => {
+    button.addEventListener('click', () => {
+        calculator.appendNumber(button.innerText);
+        calculator.updateDisplay();
+    })
+})
+
+operationButtons.forEach(button => {
+    button.addEventListener('click', () => {
+        calculator.selectOperator(button.innerText);
+        calculator.updateDisplay();
+    })
+})
+
+equalsButton.addEventListener('click', button => {
+    calculator.compute();
+    calculator.updateDisplay();
+})
+
+clearButton.addEventListener('click', button => {
+    calculator.clear();
+    calculator.updateDisplay();
+})
